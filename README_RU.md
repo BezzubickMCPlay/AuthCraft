@@ -1,5 +1,7 @@
 # AuthCraft
 
+[English](README.md) | [Русский](README_RU.md)
+
 <div align="center">
 
 ![AuthCraft Logo](docs/images/logo.png)
