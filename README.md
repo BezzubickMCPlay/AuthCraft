@@ -398,17 +398,15 @@ MIT License with additional terms for offline mode usage.
 
 ## 🆘 Support
 
-- **Documentation**: [docs.authcraft.dev](https://docs.authcraft.dev)
-- **GitHub Issues**: [bugs, features](https://github.com/authcraft/authcraft/issues)
-- **Discord**: [discord.authcraft.dev](https://discord.authcraft.dev)
-- **Email**: support@authcraft.dev
+- **GitHub Issues**: [bugs, features](https://github.com/BezzubickMCPlay/authcraft/issues)
+- **Email**: BezzubickMCPlay+AuthCraft@gmail.com
 
 ---
 
 ## 📈 Statistics
 
-![GitHub Stars](https://img.shields.io/github/stars/authcraft/authcraft?style=social)
-![GitHub Downloads](https://img.shields.io/github/downloads/authcraft/authcraft/total)
+![GitHub Stars](https://img.shields.io/github/stars/BezzubickMCPlay/authcraft?style=social)
+![GitHub Downloads](https://img.shields.io/github/downloads/BezzubickMCPlay/authcraft/total)
 ![Servers using AuthCraft](https://img.shields.io/badge/Servers-1000+-blue)
 
 ---
