@@ -1,0 +1,111 @@
+# authcraft-bukkit/src/main/resources/config.yml
+# ╔══════════════════════════════════════╗
+# ║         AuthCraft Configuration      ║
+# ╚══════════════════════════════════════╝
+
+# Database settings
+database:
+  type: sqlite          # sqlite, mysql, postgresql
+  host: localhost
+  port: 3306
+  name: authcraft
+  username: root
+  password: ""
+  file: authcraft.db    # SQLite only
+  pool-size: 10
+
+# Password hashing
+security:
+  hash-algorithm: argon2id  # argon2id, bcrypt, pbkdf2
+  argon2:
+    iterations: 3
+    memory: 65536        # KB
+    parallelism: 1
+  bcrypt:
+    cost: 12
+
+# Password policy
+password-policy:
+  min-length: 8
+  max-length: 128
+  min-score: 50
+  require-uppercase: true
+  require-lowercase: true
+  require-digit: true
+  require-special: false
+  check-blacklist: true
+
+# Session management
+session:
+  ttl-hours: 168         # 7 days
+  strict-ip: true
+
+# Login security
+login:
+  max-attempts: 5
+  base-lock-minutes: 5
+  max-lock-minutes: 1440 # 24 hours
+  max-accounts-per-ip: 3
+
+# Two-Factor Authentication
+2fa:
+  totp:
+    enabled: true
+  telegram:
+    enabled: false
+    bot-token: ""
+  vk:
+    enabled: false
+    bot-token: ""
+  email:
+    enabled: false
+    smtp-host: ""
+    smtp-port: 587
+  backup-code-count: 10
+
+# AntiBot
+antibot:
+  enabled: true
+  max-connections-per-ip: 5
+  window-seconds: 60
+  global-max-per-second: 100
+  confidence-threshold: 0.7
+  pattern-analysis: true
+
+# GeoIP filtering
+geoip:
+  enabled: false
+  mode: blacklist        # whitelist or blacklist
+  countries:
+    - CN
+    - KP
+
+# Unicode spoofing detection
+unicode-spoofing:
+  enabled: true
+  threshold: 0.8
+
+# Security audit on startup
+security-audit:
+  enabled: true
+  check-ports: true
+  check-rcon: true
+
+# Admin notifications
+notifications:
+  admin-on-failed-login: true
+  after-attempts: 2
+
+# Language
+language: ru
+
+# Limbo settings
+limbo:
+  reminder-interval: 10 # seconds
+
+# Debug mode - enables detailed logging for troubleshooting
+debug:
+  enabled: false          # Master switch - enables all debug logging
+  integrations: false     # VK, Telegram, Email integration debug
+  storage: false          # Database operations debug
+  auth: false             # Authentication flow debug

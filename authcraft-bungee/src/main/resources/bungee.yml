@@ -1,0 +1,6 @@
+# authcraft-bungee/src/main/resources/bungee.yml
+name: AuthCraft
+main: com.authcraft.bungee.AuthCraftBungee
+version: '${version}'
+author: AuthCraft Team
+description: Advanced authentication for BungeeCord networks

@@ -1,0 +1,262 @@
+# AuthCraft Japanese Messages
+# 日本語メッセージ
+
+# === Registration ===
+register:
+  usage: "&c使用方法: /register <パスワード> <パスワード確認>"
+  password_mismatch: "&cパスワードが一致しません。"
+  password_too_short: "&cパスワードが短すぎます。最低%min%文字必要です。"
+  password_too_simple: "&cパスワードが単純すぎます。より複雑なパスワードを使用してください。"
+  password_username: "&cパスワードにユーザー名を含めることはできません。"
+  password_common: "&cそのパスワードは一般的すぎます。別のパスワードを選択してください。"
+  success: "&a登録が完了しました！ようこそ、%player%さん。"
+  already_registered: "&c既に登録済みです。"
+  please_register: "&eアカウント登録が必要です: /register <パスワード> <パスワード確認>"
+  max_accounts: "&cこのIPアドレスから登録できるアカウント数の上限に達しています。"
+
+# === Login ===
+login:
+  usage: "&c使用方法: /login <パスワード>"
+  incorrect_password: "&cパスワードが正しくありません。"
+  success: "&aログインしました！"
+  please_login: "&eログインしてください: /login <パスワード>"
+  not_registered: "&cアカウントが登録されていません。先に /register を使用してください。"
+  already_logged_in: "&c既にログイン済みです。"
+  locked: "&cアカウントがロックされています。%time%秒お待ちください。"
+  kicked_attempts: "&cログイン試行回数が上限に達しました。"
+
+# === Two-Factor Authentication ===
+twofactor:
+  # TOTP
+  totp:
+    setup_start: "&e二段階認証の設定を開始します。"
+    setup_qr: "&e以下のURLからQRコードをスキャンしてください: %url%"
+    setup_code: "&eまたは、このコードを手動で入力してください: %code%"
+    setup_confirm: "&e設定を完了するには: /2fa confirm <コード>"
+    setup_success: "&a二段階認証が有効になりました！"
+    setup_invalid: "&cコードが正しくありません。もう一度お試しください。"
+    verify_prompt: "&e認証アプリからコードを入力してください: /2fa verify <コード>"
+    verify_success: "&a二段階認証が完了しました。"
+    verify_invalid: "&cコードが正しくありません。"
+  
+  # Telegram
+  telegram:
+    setup_start: "&eTelegram二段階認証の設定を開始します。"
+    setup_link: "&e以下のボットを開始してください: %bot_link%"
+    setup_code: "&eボットに以下のコードを送信してください: %code%"
+    setup_wait: "&eTelegramでの確認をお待ちください..."
+    setup_success: "&aTelegram二段階認証が有効になりました！"
+    setup_cancelled: "&cTelegram認証がキャンセルされました。"
+    verify_prompt: "&eTelegramで送信されたコードを確認してください。"
+    verify_button: "&eまたは、Telegramで承認ボタンを押してください。"
+    verify_approved: "&aTelegramでログインが承認されました。"
+    verify_denied: "&cTelegramでログインが拒否されました。"
+    verify_timeout: "&cTelegram認証がタイムアウトしました。"
+  
+  # VK
+  vk:
+    setup_start: "&eVK二段階認証の設定を開始します。"
+    setup_link: "&e以下のグループにメッセージを送信してください: %group_link%"
+    setup_code: "&eメッセージに以下のコードを含めてください: %code%"
+    setup_wait: "&eVKでの確認をお待ちください..."
+    setup_success: "&aVK二段階認証が有効になりました！"
+    setup_cancelled: "&cVK認証がキャンセルされました。"
+    verify_prompt: "&eVKで送信されたコードを確認してください。"
+    verify_button: "&eまたは、VKで承認ボタンを押してください。"
+    verify_approved: "&aVKでログインが承認されました。"
+    verify_denied: "&cVKでログインが拒否されました。"
+    verify_timeout: "&cVK認証がタイムアウトしました。"
+  
+  # Email
+  email:
+    setup_start: "&eメール二段階認証の設定を開始します。"
+    setup_address: "&eメールアドレスを設定してください: /email set <メール>"
+    setup_sent: "&e確認メールを %email% に送信しました。"
+    setup_confirm: "&eメール内のコードを入力してください: /email confirm <コード>"
+    setup_success: "&aメール二段階認証が有効になりました！"
+    verify_prompt: "&eメールで送信されたコードを入力してください: /email verify <コード>"
+    verify_sent: "&e認証コードを %email% に送信しました。"
+    verify_success: "&aメール認証が完了しました。"
+    verify_invalid: "&cコードが正しくありません。"
+  
+  # Backup codes
+  backup_codes:
+    generated: "&aバックアップコードが生成されました！"
+    list_header: "&e=== バックアップコード ==="
+    list_item: "&7%number%. &f%code%"
+    warning: "&cこれらのコードを安全な場所に保管してください！"
+    used: "&aバックアップコードを使用しました。残り: %remaining%"
+    exhausted: "&cバックアップコードが残っていません。"
+    regenerate: "&eバックアップコードを再生成: /2fa backup"
+  
+  # General
+  status:
+    enabled: "&a二段階認証: 有効 (%method%)"
+    disabled: "&7二段階認証: 無効"
+    methods: "&e有効な方法: %methods%"
+  
+  disable:
+    success: "&a二段階認証が無効になりました。"
+    not_enabled: "&c二段階認証が有効になっていません。"
+    confirm: "&e無効化するには: /2fa disable confirm"
+  
+  error: "&c二段階認証エラー: %error%"
+
+# === Session ===
+session:
+  restored: "&aセッションが復元されました。"
+  expired: "&eセッションの有効期限が切れました。再度ログインしてください。"
+  invalid: "&cセッションが無効です。"
+
+# === Password Change ===
+changepassword:
+  usage: "&c使用方法: /changepassword <現在のパスワード> <新しいパスワード>"
+  incorrect: "&c現在のパスワードが正しくありません。"
+  success: "&aパスワードを変更しました。"
+  same_password: "&c新しいパスワードは現在のパスワードと異なるものを指定してください。"
+
+# === Logout ===
+logout:
+  success: "&aログアウトしました。"
+  not_logged_in: "&cログインしていません。"
+
+# === Account ===
+account:
+  locked: "&cアカウントがロックされています。管理者にお問い合わせください。"
+  unlocked: "&aアカウントのロックが解除されました。"
+  deleted: "&cアカウントが削除されました。"
+
+# === Admin Commands ===
+admin:
+  player_not_found: "&cプレイヤーが見つかりません: %player%"
+  usage: "&c使用方法: /authcraft <コマンド> [引数]"
+  
+  # Reset 2FA
+  reset2fa:
+    success: "&a%player%の二段階認証をリセットしました。"
+    error: "&c二段階認証のリセットに失敗しました。"
+  
+  # Unlock
+  unlock:
+    success: "&a%player%のロックを解除しました。"
+    error: "&cロックの解除に失敗しました。"
+  
+  # Set role
+  setrole:
+    success: "&a%player%のロールを%role%に設定しました。"
+    error: "&cロールの設定に失敗しました。"
+    invalid_role: "&c無効なロール: %role%"
+  
+  # Info
+  info:
+    header: "&e=== プレイヤー情報: %player% ==="
+    uuid: "&7UUID: &f%uuid%"
+    registered: "&7登録日: &f%date%"
+    last_login: "&7最終ログイン: &f%date%"
+    ip: "&7IP: &f%ip%"
+    role: "&7ロール: &f%role%"
+    twofa: "&7二段階認証: &f%status%"
+    locked: "&7ロック状態: &f%status%"
+  
+  # Reload
+  reload:
+    success: "&a設定を再読み込みしました。"
+    error: "&c設定の再読み込みに失敗しました。"
+
+# === Security ===
+security:
+  # Geo blocking
+  geo_blocked: "&cあなたの地域からはアクセスできません。"
+  
+  # VPN/Proxy
+  vpn_blocked: "&cVPNまたはプロキシの使用は許可されていません。"
+  
+  # Suspicious activity
+  suspicious_login: "&c不審なログインが検出されました。"
+  new_location: "&e新しい場所からのログインが検出されました。"
+  
+  # Rate limiting
+  rate_limited: "&c試行回数が多すぎます。%time%秒お待ちください。"
+  
+  # Bot detection
+  bot_detected: "&cボットの可能性が検出されました。"
+
+# === Notifications ===
+notification:
+  login:
+    title: "&aログイン通知"
+    message: "&e%ip%からあなたのアカウントにログインがありました。"
+    new_device: "&c新しいデバイスからのログインが検出されました！"
+    new_location: "&e新しい場所からのログイン: %location%"
+  
+  password_change:
+    title: "&cパスワード変更"
+    message: "&eあなたのパスワードが変更されました。"
+    warning: "&c心当たりがない場合は、すぐにパスワードを変更してください。"
+  
+  security_alert:
+    title: "&4⚠ セキュリティ警告"
+    message: "&cセキュリティイベントが検出されました: %event%"
+  
+  twofa:
+    enabled: "&a二段階認証が有効になりました。"
+    disabled: "&c二段階認証が無効になりました。"
+
+# === Trusted Device ===
+trusted_device:
+  added: "&aこのデバイスを信頼済みとして登録しました。"
+  removed: "&eこのデバイスの信頼を解除しました。"
+  list_header: "&e=== 信頼済みデバイス ==="
+  list_item: "&7%number%. &f%device% (%date%)"
+  max_reached: "&c信頼済みデバイスの上限に達しています。"
+  prompt: "&eこのデバイスを信頼しますか？ /trustdevice <名前>"
+  expired: "&e信頼済みデバイスの有効期限が切れました。"
+
+# === Errors ===
+error:
+  generic: "&cエラーが発生しました。後でもう一度お試しください。"
+  database: "&cデータベースエラーが発生しました。"
+  network: "&cネットワークエラーが発生しました。"
+  permission: "&cこのコマンドを実行する権限がありません。"
+  player_only: "&cこのコマンドはプレイヤーのみ実行できます。"
+  console_only: "&cこのコマンドはコンソールのみ実行できます。"
+  cooldown: "&cこのコマンドは%time%秒待ってから実行してください。"
+
+# === Help ===
+help:
+  header: "&e=== AuthCraft ヘルプ ==="
+  register: "&7/register <パスワード> &f- アカウント登録"
+  login: "&7/login <パスワード> &f- ログイン"
+  changepassword: "&7/changepassword <現在> <新規> &f- パスワード変更"
+  logout: "&7/logout &f- ログアウト"
+  twofactor: "&7/2fa &f- 二段階認証管理"
+  email: "&7/email &f- メール設定"
+  trusteddevice: "&7/trustdevice &f- 信頼済みデバイス管理"
+  footer: "&e==================="
+
+# === Password Strength ===
+password_strength:
+  very_weak: "&c非常に弱い"
+  weak: "&c弱い"
+  fair: "&e普通"
+  strong: "&a強い"
+  very_strong: "&2非常に強い"
+  
+  suggestions:
+    length: "&7最低%min%文字必要です"
+    uppercase: "&7大文字を含めてください"
+    lowercase: "&7小文字を含めてください"
+    numbers: "&7数字を含めてください"
+    symbols: "&7記号を含めてください"
+    no_common: "&c一般的なパスワードです"
+    no_username: "&cユーザー名を含めないでください"
+    no_sequential: "&c連続した文字を避けてください"
+    no_repeated: "&c繰り返し文字を避けてください"
+
+# === Kick Messages ===
+kick:
+  already_online: "&cこのアカウントは既にログインしています。"
+  session_expired: "&cセッションの有効期限が切れました。"
+  security_violation: "&cセキュリティ違反が検出されました。"
+  maintenance: "&cサーバーはメンテナンス中です。"
+  banned: "&cアカウントがBANされています。理由: %reason%"

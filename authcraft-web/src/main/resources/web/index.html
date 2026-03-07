@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuthCraft Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .login-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .login-box h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .login-box p {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar h2 {
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #aaa;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: rgba(102, 126, 234, 0.2);
+            color: #fff;
+        }
+        
+        .nav-item svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+        }
+        
+        .main-content {
+            margin-left: 260px;
+            padding: 30px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-card h3 {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        th {
+            color: #888;
+            font-weight: 500;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .badge-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        
+        .badge-warning {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        
+        .badge-danger {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        .logout-btn {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <h1>🔐 AuthCraft</h1>
+            <p>Web Dashboard</p>
+            
+            <div class="error-message" id="errorMessage"></div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="login-btn" id="loginBtn">
+                    Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <nav class="sidebar">
+            <h2>🔐 AuthCraft</h2>
+            
+            <div class="nav-item active" data-page="overview">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                Overview
+            </div>
+            
+            <div class="nav-item" data-page="players">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                Players
+            </div>
+            
+            <div class="nav-item" data-page="security">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                Security
+            </div>
+            
+            <div class="nav-item" data-page="twofactor">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                2FA Stats
+            </div>
+            
+            <div class="nav-item" data-page="config">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                Configuration
+            </div>
+        </nav>
+        
+        <main class="main-content">
+            <div class="header">
+                <h1 id="pageTitle">Overview</h1>
+                <div class="user-info">
+                    <span id="currentUser"></span>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <!-- Overview Page -->
+            <div id="overviewPage">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Online Players</h3>
+                        <div class="value" id="onlinePlayers">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Accounts</h3>
+                        <div class="value" id="totalAccounts">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>2FA Enabled</h3>
+                        <div class="value" id="twoFactorEnabled">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Sessions</h3>
+                        <div class="value" id="activeSessions">-</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Recent Activity (24h)</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Logins</h3>
+                            <div class="value" id="logins24h">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Registrations</h3>
+                            <div class="value" id="registrations24h">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Failed Logins</h3>
+                            <div class="value" id="failedLogins24h">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Players Page -->
+            <div id="playersPage" style="display: none;">
+                <div class="card">
+                    <h2>Player List</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>2FA</th>
+                                <th>Last Login</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playersList">
+                            <tr><td colspan="5">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Security Page -->
+            <div id="securityPage" style="display: none;">
+                <div class="card">
+                    <h2>Active Threats</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>IP Address</th>
+                                <th>Failed Attempts</th>
+                                <th>Severity</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="threatsList">
+                            <tr><td colspan="4">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 2FA Page -->
+            <div id="twofactorPage" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>2FA Adoption Rate</h3>
+                        <div class="value" id="adoptionRate">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>TOTP Users</h3>
+                        <div class="value" id="totpUsers">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Telegram Users</h3>
+                        <div class="value" id="telegramUsers">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Email Users</h3>
+                        <div class="value" id="emailUsers">-</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Config Page -->
+            <div id="configPage" style="display: none;">
+                <div class="card">
+                    <h2>Configuration</h2>
+                    <p>Configuration management coming soon...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        const API_BASE = '/api';
+        let accessToken = localStorage.getItem('accessToken');
+        let ws = null;
+        
+        // Check if already logged in
+        if (accessToken) {
+            verifyToken();
+        }
+        
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const btn = document.getElementById('loginBtn');
+            const errorDiv = document.getElementById('errorMessage');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span>';
+            errorDiv.style.display = 'none';
+            
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    accessToken = data.data.accessToken;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', data.data.refreshToken);
+                    showDashboard(data.data.username, data.data.role);
+                } else {
+                    errorDiv.textContent = data.error || 'Login failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorDiv.textContent = 'Connection error. Is the server running?';
+                errorDiv.style.display = 'block';
+            }
+            
+            btn.disabled = false;
+            btn.textContent = 'Sign In';
+        });
+        
+        async function verifyToken() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/verify`, {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showDashboard(data.data.username, data.data.role);
+                } else {
+                    localStorage.removeItem('accessToken');
+                    accessToken = null;
+                }
+            } catch (err) {
+                console.error('Token verification failed:', err);
+            }
+        }
+        
+        function showDashboard(username, role) {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('currentUser').textContent = `${username} (${role})`;
+            
+            loadOverview();
+            connectWebSocket();
+        }
+        
+        function logout() {
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            accessToken = null;
+            if (ws) ws.close();
+            location.reload();
+        }
+        
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                const page = item.dataset.page;
+                document.getElementById('pageTitle').textContent = item.textContent.trim();
+                
+                // Hide all pages
+                document.querySelectorAll('[id$="Page"]').forEach(p => p.style.display = 'none');
+                
+                // Show selected page
+                document.getElementById(page + 'Page').style.display = 'block';
+                
+                // Load page data
+                switch(page) {
+                    case 'overview': loadOverview(); break;
+                    case 'players': loadPlayers(); break;
+                    case 'security': loadSecurity(); break;
+                    case 'twofactor': load2FA(); break;
+                    case 'config': loadConfig(); break;
+                }
+            });
+        });
+        
+        async function apiGet(endpoint) {
+            const response = await fetch(`${API_BASE}${endpoint}`, {
+                headers: { 'Authorization': `Bearer ${accessToken}` }
+            });
+            return response.json();
+        }
+        
+        async function loadOverview() {
+            try {
+                const data = await apiGet('/dashboard/stats');
+                if (data.success) {
+                    const stats = data.data;
+                    document.getElementById('onlinePlayers').textContent = stats.players.online;
+                    document.getElementById('totalAccounts').textContent = stats.players.total;
+                    document.getElementById('twoFactorEnabled').textContent = stats.twoFactor.enabled;
+                    document.getElementById('activeSessions').textContent = stats.sessions.active;
+                    document.getElementById('logins24h').textContent = stats.activity24h.logins;
+                    document.getElementById('registrations24h').textContent = stats.activity24h.registrations;
+                    document.getElementById('failedLogins24h').textContent = stats.activity24h.failedLogins;
+                }
+            } catch (err) {
+                console.error('Failed to load overview:', err);
+            }
+        }
+        
+        async function loadPlayers() {
+            try {
+                const data = await apiGet('/players?limit=50');
+                if (data.success) {
+                    const tbody = document.getElementById('playersList');
+                    tbody.innerHTML = data.data.players.map(p => `
+                        <tr>
+                            <td>${p.username}</td>
+                            <td>${p.role}</td>
+                            <td><span class="badge ${p.twoFactorEnabled ? 'badge-success' : 'badge-warning'}">${p.twoFactorEnabled ? 'Enabled' : 'Disabled'}</span></td>
+                            <td>${p.lastLogin ? new Date(p.lastLogin).toLocaleDateString() : 'Never'}</td>
+                            <td><span class="badge ${p.locked ? 'badge-danger' : 'badge-success'}">${p.locked ? 'Locked' : 'Active'}</span></td>
+                        </tr>
+                    `).join('');
+                }
+            } catch (err) {
+                console.error('Failed to load players:', err);
+            }
+        }
+        
+        async function loadSecurity() {
+            try {
+                const data = await apiGet('/security/threats');
+                if (data.success) {
+                    const tbody = document.getElementById('threatsList');
+                    if (data.data.threats.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="4">No active threats detected</td></tr>';
+                    } else {
+                        tbody.innerHTML = data.data.threats.map(t => `
+                            <tr>
+                                <td>${t.ip}</td>
+                                <td>${t.failedAttempts}</td>
+                                <td><span class="badge badge-${t.severity === 'high' ? 'danger' : t.severity === 'medium' ? 'warning' : 'success'}">${t.severity}</span></td>
+                                <td><button onclick="unblockIp('${t.ip}')" class="logout-btn">Unblock</button></td>
+                            </tr>
+                        `).join('');
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to load security:', err);
+            }
+        }
+        
+        async function load2FA() {
+            try {
+                const data = await apiGet('/2fa/stats');
+                if (data.success) {
+                    const stats = data.data;
+                    document.getElementById('adoptionRate').textContent = stats.overview.adoptionRate.toFixed(1) + '%';
+                    document.getElementById('totpUsers').textContent = stats.methodDistribution.TOTP || 0;
+                    document.getElementById('telegramUsers').textContent = stats.methodDistribution.TELEGRAM || 0;
+                    document.getElementById('emailUsers').textContent = stats.methodDistribution.EMAIL || 0;
+                }
+            } catch (err) {
+                console.error('Failed to load 2FA stats:', err);
+            }
+        }
+        
+        async function loadConfig() {
+            // Configuration page - placeholder
+        }
+        
+        async function unblockIp(ip) {
+            try {
+                await fetch(`${API_BASE}/security/blocked-ips/${encodeURIComponent(ip)}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+                loadSecurity();
+            } catch (err) {
+                console.error('Failed to unblock IP:', err);
+            }
+        }
+        
+        function connectWebSocket() {
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            ws = new WebSocket(`${wsProtocol}//${location.host}/ws`);
+            
+            ws.onopen = () => {
+                ws.send(JSON.stringify({ action: 'subscribe', channel: 'stats' }));
+            };
+            
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                if (data.type === 'stats') {
+                    document.getElementById('onlinePlayers').textContent = data.data.onlinePlayers;
+                    document.getElementById('totalAccounts').textContent = data.data.totalAccounts;
+                    document.getElementById('activeSessions').textContent = data.data.activeSessions;
+                }
+            };
+            
+            ws.onclose = () => {
+                // Reconnect after 5 seconds
+                setTimeout(connectWebSocket, 5000);
+            };
+        }
+    </script>
+</body>
+</html>

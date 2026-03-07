@@ -1,0 +1,66 @@
+# authcraft-bungee/src/main/resources/bungee-config.yml
+# AuthCraft BungeeCord Configuration
+
+database:
+  type: sqlite
+  host: localhost
+  port: 3306
+  name: authcraft
+  username: root
+  password: ""
+  file: authcraft.db
+
+security:
+  hash-algorithm: argon2id
+
+session:
+  ttl-hours: 168
+  strict-ip: true
+
+login:
+  max-attempts: 5
+  base-lock-minutes: 5
+  max-lock-minutes: 1440
+  max-accounts-per-ip: 3
+
+2fa:
+  totp:
+    enabled: true
+  telegram:
+    enabled: false
+    bot-token: ""
+  vk:
+    enabled: false
+    bot-token: ""
+  email:
+    enabled: false
+
+antibot:
+  enabled: true
+  max-connections-per-ip: 5
+  window-seconds: 60
+  global-max-per-second: 100
+  confidence-threshold: 0.7
+  pattern-analysis: true
+
+geoip:
+  enabled: false
+  mode: blacklist
+  countries:
+    - CN
+    - KP
+
+unicode-spoofing:
+  enabled: true
+  threshold: 0.8
+
+security-audit:
+  enabled: true
+  check-ports: true
+  check-rcon: true
+
+notifications:
+  admin-on-failed-login: true
+  after-attempts: 2
+
+language: ru

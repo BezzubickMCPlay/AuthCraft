@@ -1,0 +1,203 @@
+# authcraft-core/src/main/resources/messages_ru.yml
+
+# ═══════════════════════════════════════
+# AuthCraft — Русская локализация
+# ═══════════════════════════════════════
+
+prefix: "§6[AuthCraft] §r"
+
+# ═══ Регистрация ═══
+register:
+  usage: "§eИспользование: /register <пароль> <пароль>"
+  success: "§aРегистрация прошла успешно! Добро пожаловать!"
+  already-registered: "§cЭто имя уже зарегистрировано."
+  passwords-mismatch: "§cПароли не совпадают."
+  too-many-accounts: "§cСлишком много аккаунтов с вашего IP-адреса (максимум {max})."
+  prompt: "§aДля регистрации введите: §e/register <пароль> <пароль>"
+
+# ═══ Авторизация ═══
+login:
+  usage: "§eИспользование: /login <пароль>"
+  success: "§aВы успешно авторизованы!"
+  wrong-password: "§cНеверный пароль. Осталось попыток: §e{remaining}"
+  account-not-found: "§cАккаунт не найден. Используйте §e/register"
+  locked: "§cАккаунт заблокирован. Повторите через §e{time}§c."
+  kicked-locked: "§cАккаунт заблокирован на {time} из-за множества неудачных попыток входа."
+  prompt: "§eДля входа введите: §e/login <пароль>"
+  session-restored: "§aСессия восстановлена. С возвращением!"
+  already-authenticated: "§cВы уже авторизованы."
+  
+  # ═══ Выход ═══
+  logout:
+    success: "§aВы вышли из системы. Используйте §e/login §aдля повторного входа."
+    not-authenticated: "§cВы не авторизованы."
+    kick: "§cВы вышли из системы.\n§7Ваша сессия завершена.\n§eПереподключитесь для повторного входа."
+  
+  # ═══ Пароль ═══
+password:
+  change-usage: "§eИспользование: /changepassword <старый> <новый>"
+  changed: "§aПароль успешно изменён! Все сессии сброшены."
+  old-incorrect: "§cТекущий пароль неверен."
+  weak-header: "§cСлабый пароль:"
+  weak-item: "§7- {violation}"
+  must-login: "§cВы должны войти в систему."
+
+# ═══ Двухфакторная аутентификация ═══
+2fa:
+  usage: |
+    §e═══ AuthCraft 2FA ═══
+    §7/2fa enable [totp|telegram|vk|email] §8— включить
+    §7/2fa confirm <код> §8— подтвердить настройку
+    §7/2fa disable <пароль> [метод] §8— отключить все или конкретный метод
+    §7/2fa status §8— показать включённые методы
+    §7/2fa backup §8— обновить резервные коды
+    §7/2fa <код> §8— ввести код при входе
+  prompt: "§eВведите код 2FA: §e/2fa <код>"
+  invalid-code: "§cНеверный код. Осталось попыток: §e{remaining}§c. Вы можете использовать резервный код."
+  too-many-attempts: "§cСлишком много неудачных попыток 2FA."
+  no-pending: "§cНет ожидающей проверки 2FA."
+  method-unavailable: "§cМетод 2FA §e{method} §cнедоступен."
+  unknown-method: "§cНеизвестный метод. Используйте: totp, telegram, vk, email"
+  setup-header: "§a═══ Настройка 2FA ═══"
+  setup-method: "§7Метод: §f{method}"
+  setup-secret: "§7Секретный ключ: §f{secret}"
+  setup-qr: "§7Отсканируйте QR-код в Google Authenticator"
+  setup-qr-clickable: "§7Или нажмите на ссылку выше, чтобы открыть в приложении-аутентификаторе"
+  setup-telegram: "§7Отправьте код §f{code} §7боту в Telegram: §f@{bot}"
+  setup-vk: "§7Отправьте код §f{code} §7боту ВКонтакте: §f{bot}"
+  setup-email: "§7Код отправлен на §f{email}"
+  setup-confirm: "§7Затем подтвердите: §e/2fa confirm <код>"
+  enabled: "§a✓ Двухфакторная аутентификация включена!"
+  disabled: "§aДвухфакторная аутентификация отключена."
+  wrong-password: "§cНеверный пароль."
+  backup-header: "§a═══ Резервные коды ═══"
+  backup-warning-save: "§c⚠ Сохраните эти коды! Они не могут быть показаны повторно."
+  backup-code: "§7 {code}"
+  backup-footer: "§a═════════════════════"
+  backup-remaining: "§e⚠ Осталось резервных кодов: §c{remaining}§e. Используйте §e/2fa backup §eдля обновления."
+  confirm-usage: "§eИспользование: /2fa confirm <код>"
+  confirm-invalid: "§cНеверный код. Попробуйте ещё раз."
+  disable-usage: "§eИспользование: /2fa disable <пароль> [метод]"
+  no-setup: "§cНет активной настройки 2FA. Сначала используйте §e/2fa enable"
+  status-header: "§a═══ Статус 2FA ═══"
+  status-none: "§7Нет включённых методов 2FA."
+  status-footer: "§a═════════════════════"
+  method-disabled: "§aМетод 2FA §e{method} §aотключён."
+  already-enabled: "§cМетод 2FA §e{method} §cуже включён."
+  session-restore-blocked: "§cВы не можете включить 2FA после восстановления сессии. Сначала войдите с паролем."
+  # Сообщения для Telegram/VK
+  login-request-title: "🔐 Запрос на вход в AuthCraft"
+  login-request-player: "👤 Игрок: {player}"
+  login-request-ip: "🌐 IP: {ip}"
+  login-request-location: "📍 Местоположение: {location}"
+  login-request-time: "🕐 Время: {time}"
+  login-request-confirm: "✅ Подтвердить"
+  login-request-deny: "❌ Отклонить"
+  login-approved: "§a✓ Вход подтверждён через {method}!"
+  login-denied: "§cВход отклонён через {method}. Если это не вы, смените пароль!"
+  login-denied-kick: "§cВход отклонён владельцем аккаунта."
+  login-waiting: "§eОжидание подтверждения через {method}... Или введите код: /2fa <код>"
+  login-timeout: "§cВремя ожидания подтверждения истекло. Попробуйте снова."
+
+# ═══ Роли ═══
+role:
+  changed: "§aРоль §e{player} §aизменена на §e{role}§a."
+  removed: "§aРоль §e{role} §aудалена у §e{player}§a."
+  not-found: "§cРоль не найдена: §e{role}"
+  player-not-found: "§cИгрок не найден: §e{player}"
+
+# ═══ Безопасность ═══
+security:
+  bot-detected: "§cСоединение отклонено системой анти-бот."
+  geo-blocked: "§cПодключение из вашего региона запрещено."
+  unicode-spoof: "§cОбнаружено подозрительное имя пользователя. Используйте другое."
+  ip-blocked: "§cВаш IP-адрес временно заблокирован."
+
+# ═══ Лимбо ═══
+limbo:
+  must-auth: "§cВы должны авторизоваться."
+  must-auth-chat: "§cВы должны авторизоваться перед отправкой сообщений."
+  must-auth-command: "§cВы должны авторизоваться для выполнения команд."
+  title: "§6AuthCraft"
+  subtitle: "§7Пожалуйста, авторизуйтесь"
+  title-success: "§a✓"
+  subtitle-success: "§7С возвращением!"
+
+# ═══ Администрирование ═══
+admin:
+  no-permission: "§cНедостаточно прав."
+  usage: |
+    §e═══ AuthCraft Admin ═══
+    §7/authcraft reset2fa <игрок>
+    §7/authcraft unlock <игрок>
+    §7/authcraft setrole <игрок> <роль>
+    §7/authcraft info <игрок>
+    §7/authcraft antibot
+    §7/authcraft reload
+  players-only: "§cТолько для игроков."
+  reset2fa-usage: "§eИспользование: /authcraft reset2fa <игрок>"
+  reset2fa-success: "§a2FA сброшена для §e{player}§a."
+  unlock-usage: "§eИспользование: /authcraft unlock <игрок>"
+  unlock-success: "§aАккаунт §e{player} §aразблокирован."
+  setrole-usage: "§eИспользование: /authcraft setrole <игрок> <роль>"
+  setrole-success: "§aРоль §e{player} §aизменена на §e{role}§a."
+  setrole-failed: "§cОшибка. Проверьте имя игрока и роль."
+  info-usage: "§eИспользование: /authcraft info <игрок>"
+  info-header: "§e═══ Информация об аккаунте ═══"
+  info-uuid: "§7UUID: §f{uuid}"
+  info-role: "§7Роль: §f{role}"
+  info-status: "§7Статус: §f{status}"
+  info-2fa: "§72FA: §f{method}"
+  info-hash: "§7Хеш: §f{algorithm}"
+  info-failed: "§7Неудачных попыток: §f{attempts}"
+  info-last-ip: "§7Последний IP: §f{ip}"
+  info-last-login: "§7Последний вход: §f{date}"
+  info-registered: "§7Зарегистрирован: §f{date}"
+  antibot-header: "§e═══ Статус AntiBot ═══"
+  antibot-mode: "§7Режим атаки: {status}"
+  antibot-mode-active: "§cАКТИВЕН"
+  antibot-mode-off: "§aВыключен"
+  antibot-blocked: "§7Заблокированных IP: §f{count}"
+  reloaded: "§aКонфигурация AuthCraft перезагружена."
+  not-found: "§cИгрок не найден."
+
+# ═══ Уведомления ═══
+notify:
+  failed-login: "§c[AuthCraft] §f{player} §7неудачная попытка входа §c#{attempt} §7с §f{ip}"
+  account-locked: "§c[AuthCraft] §f{player} §7заблокирован §7({ip})"
+  bot-detected: "§c[AuthCraft] §7Бот обнаружен: §f{name} §7({ip}) §7[{confidence}%]"
+  unicode-spoof: "§c[AuthCraft] §7Unicode-спуфинг: §f{name} §7({ip})"
+  new-ip-login: "§e[AuthCraft] §f{player} §7вошёл с нового IP: §f{ip} §7(пред: §f{old_ip}§7)"
+  security-prefix: "§c[AuthCraft Security] §f"
+
+# ═══ Ошибки ═══
+error:
+  generic: "§cПроизошла ошибка. Попробуйте снова."
+  database: "§cОшибка базы данных. Обратитесь к администратору."
+
+# ═══ Индикатор надёжности пароля ═══
+password-strength:
+  very-weak: "§cОчень слабый"
+  weak: "§cСлабый"
+  fair: "§eСредний"
+  strong: "§aНадёжный"
+  very-strong: "§2Очень надёжный"
+  progress-bar: "{bar} §7{level}"
+  requirements-header: "§eТребования к паролю:"
+  requirement-length: "{status} §7{min}-{max} символов"
+  requirement-uppercase: "{status} §7Заглавная буква (A-Z)"
+  requirement-lowercase: "{status} §7Строчная буква (a-z)"
+  requirement-digit: "{status} §7Цифра (0-9)"
+  requirement-special: "{status} §7Специальный символ (!@#$)"
+  requirement-met: "§a✓"
+  requirement-unmet: "§c✗"
+  suggestions-header: "§eРекомендации:"
+  suggestion: "§7- {suggestion}"
+
+# ═══ Уведомления о входе ═══
+login_notification:
+  new_login: "🔐 Новый вход в ваш аккаунт"
+  session_restored: "🔄 Сессия восстановлена"
+  game_new: "§a✓ Обнаружен новый вход с §e{ip} §7({location})"
+  game_restored: "§7Сессия восстановлена с §e{ip} §7({location})"
+  security_alert: "§c⚠ Тревога безопасности! Обнаружена подозрительная попытка входа."

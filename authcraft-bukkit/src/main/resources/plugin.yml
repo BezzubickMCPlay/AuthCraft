@@ -1,0 +1,57 @@
+# authcraft-bukkit/src/main/resources/plugin.yml
+name: AuthCraft
+main: com.authcraft.bukkit.AuthCraftPlugin
+version: '${version}'
+# Не указываем api-version для совместимости с 1.8
+# api-version: '1.16'  # УБРАНО — это ломает 1.8-1.12
+description: Advanced authentication and security plugin for Minecraft 1.8-1.21
+author: AuthCraft Team
+website: https://github.com/authcraft
+
+softdepend:
+  - Vault
+  - PlaceholderAPI
+  - ProtocolLib
+  - Citizens
+
+commands:
+  register:
+    description: Register a new account
+    aliases: [reg]
+    usage: /register <password> <password>
+  login:
+    description: Login to your account
+    aliases: [l]
+    usage: /login <password>
+  changepassword:
+    description: Change your password
+    aliases: [cp, passwd]
+    usage: /changepassword <old> <new>
+  logout:
+    description: Logout from your account
+    aliases: [logoff]
+    usage: /logout
+  2fa:
+    description: Two-factor authentication
+    usage: /2fa <enable|confirm|disable|backup|code>
+  authcraft:
+    description: Admin commands
+    aliases: [ac]
+    permission: authcraft.admin
+    usage: /authcraft <subcommand>
+
+permissions:
+  authcraft.admin:
+    description: Full AuthCraft admin access
+    default: op
+  authcraft.admin.notify:
+    description: Receive security notifications
+    default: op
+  authcraft.guest:
+    default: true
+  authcraft.player:
+    default: false
+  authcraft.donator:
+    default: false
+  authcraft.moderator:
+    default: false

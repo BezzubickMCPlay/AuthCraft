@@ -1,0 +1,186 @@
+# authcraft-core/src/main/resources/messages_de.yml
+# German translations for AuthCraft
+
+prefix: "§6[AuthCraft] §r"
+
+register:
+  usage: "§eVerwendung: /register <Passwort> <Passwort>"
+  success: "§aRegistrierung erfolgreich! Willkommen!"
+  already-registered: "§cDieser Benutzername ist bereits registriert."
+  passwords-mismatch: "§cPasswörter stimmen nicht überein."
+  too-many-accounts: "§cZu viele Konten von deiner IP (max {max})."
+  prompt: "§aRegistriere mit: §e/register <Passwort> <Passwort>"
+
+login:
+  usage: "§eVerwendung: /login <Passwort>"
+  success: "§aErfolgreich authentifiziert!"
+  wrong-password: "§cFalsches Passwort. Verbleibende Versuche: §e{remaining}"
+  account-not-found: "§cKonto nicht gefunden. Verwende §e/register"
+  locked: "§cKonto gesperrt. Versuche es in §e{time}§c erneut."
+  kicked-locked: "§cKonto für {time} wegen zu vieler fehlgeschlagener Versuche gesperrt."
+  prompt: "§eAnmelden mit: §e/login <Passwort>"
+  session-restored: "§aSitzung wiederhergestellt. Willkommen zurück!"
+  already-authenticated: "§cDu bist bereits authentifiziert."
+
+logout:
+  success: "§aDu wurdest abgemeldet. Verwende §e/login §aum dich erneut anzumelden."
+  not-authenticated: "§cDu bist nicht angemeldet."
+  kick: "§cDu wurdest abgemeldet.\\n§7Deine Sitzung wurde beendet.\\n§eVerbinde dich erneut, um dich anzumelden."
+
+password:
+  change-usage: "§eVerwendung: /changepassword <alt> <neu>"
+  changed: "§aPasswort erfolgreich geändert! Alle Sitzungen wurden ungültig."
+  old-incorrect: "§cAktuelles Passwort ist falsch."
+  weak-header: "§cSchwaches Passwort:"
+  weak-item: "§7- {violation}"
+  must-login: "§cDu musst angemeldet sein."
+
+2fa:
+  usage: |
+    §e═══ AuthCraft 2FA ═══
+    §7/2fa enable [totp|telegram|vk|email] §8— aktivieren
+    §7/2fa confirm <Code> §8— Einrichtung bestätigen
+    §7/2fa disable <Passwort> [Methode] §8— deaktivieren
+    §7/2fa status §8— aktivierte Methoden anzeigen
+    §7/2fa backup §8— Backup-Codes neu generieren
+    §7/2fa <Code> §8— Code während der Anmeldung eingeben
+  prompt: "§eGib deinen 2FA-Code ein: §e/2fa <Code>"
+  invalid-code: "§cUngültiger Code. Verbleibende Versuche: §e{remaining}§c. Du kannst auch einen Backup-Code verwenden."
+  too-many-attempts: "§cZu viele fehlgeschlagene 2FA-Versuche."
+  no-pending: "§cKeine 2FA-Verifizierung ausstehend."
+  method-unavailable: "§c2FA-Methode §e{method} §cist nicht verfügbar."
+  unknown-method: "§cUnbekannte Methode. Verwende: totp, telegram, vk, email"
+  setup-header: "§a═══ 2FA Einrichtung ═══"
+  setup-method: "§7Methode: §f{method}"
+  setup-secret: "§7Geheimer Schlüssel: §f{secret}"
+  setup-qr: "§7Scanne den QR-Code in Google Authenticator"
+  setup-qr-clickable: "§7Oder klicke auf den Link oben, um in deiner Authenticator-App zu öffnen"
+  setup-telegram: "§7Sende Code §f{code} §7an Bot in Telegram: §f@{bot}"
+  setup-vk: "§7Sende Code §f{code} §7an VK-Bot: §f{bot}"
+  setup-email: "§7Code gesendet an §f{email}"
+  setup-confirm: "§7Dann bestätige: §e/2fa confirm <Code>"
+  enabled: "§a✓ Zwei-Faktor-Authentifizierung aktiviert!"
+  disabled: "§aZwei-Faktor-Authentifizierung deaktiviert."
+  wrong-password: "§cFalsches Passwort."
+  backup-header: "§a═══ Backup-Codes ═══"
+  backup-warning-save: "§c⚠ Speichere diese Codes! Sie können nicht erneut angezeigt werden."
+  backup-code: "§7 {code}"
+  backup-footer: "§a═════════════════════"
+  backup-remaining: "§e⚠ Verbleibende Backup-Codes: §c{remaining}§e. Verwende §e/2fa backup §eum neu zu generieren."
+  confirm-usage: "§eVerwendung: /2fa confirm <Code>"
+  confirm-invalid: "§cUngültiger Code. Versuche es erneut."
+  disable-usage: "§eVerwendung: /2fa disable <Passwort> [Methode]"
+  no-setup: "§cKeine 2FA-Einrichtung im Gange. Verwende §e/2fa enable §czuerst."
+  status-header: "§a═══ 2FA Status ═══"
+  status-none: "§7Keine 2FA-Methoden aktiviert."
+  status-footer: "§a═════════════════════"
+  method-disabled: "§a2FA-Methode §e{method} §adeaktiviert."
+  already-enabled: "§c2FA-Methode §e{method} §cist bereits aktiviert."
+  session-restore-blocked: "§cDu kannst 2FA nach einer Sitzungswiederherstellung nicht aktivieren. Bitte melde dich zuerst mit deinem Passwort an."
+  login-request-title: "🔐 AuthCraft Anmeldeanfrage"
+  login-request-player: "👤 Spieler: {player}"
+  login-request-ip: "🌐 IP: {ip}"
+  login-request-location: "📍 Standort: {location}"
+  login-request-time: "🕐 Zeit: {time}"
+  login-request-confirm: "✅ Bestätigen"
+  login-request-deny: "❌ Ablehnen"
+  login-approved: "§a✓ Anmeldung über {method} bestätigt!"
+  login-denied: "§cAnmeldung über {method} abgelehnt. Wenn das nicht du warst, ändere dein Passwort!"
+  login-denied-kick: "§cAnmeldung vom Kontoinhaber abgelehnt."
+  login-waiting: "§eWarte auf Bestätigung über {method}... Oder gib Code ein: /2fa <Code>"
+  login-timeout: "§cBestätigung abgelaufen. Versuche es erneut."
+
+role:
+  changed: "§aRolle von §e{player} §ageändert zu §e{role}§a."
+  removed: "§aRolle §e{role} §avon §e{player} §aentfernt."
+  not-found: "§cRolle nicht gefunden: §e{role}"
+  player-not-found: "§cSpieler nicht gefunden: §e{player}"
+
+security:
+  bot-detected: "§cVerbindung vom Anti-Bot-System abgelehnt."
+  geo-blocked: "§cVerbindung aus deiner Region ist nicht erlaubt."
+  unicode-spoof: "§cVerdächtiger Benutzername erkannt. Bitte verwende einen anderen Namen."
+  ip-blocked: "§cDeine IP-Adresse ist vorübergehend gesperrt."
+
+limbo:
+  must-auth: "§cDu musst dich authentifizieren."
+  must-auth-chat: "§cDu musst dich authentifizieren, um zu chatten."
+  must-auth-command: "§cDu musst dich authentifizieren, um Befehle zu nutzen."
+  title: "§6AuthCraft"
+  subtitle: "§7Bitte authentifizieren"
+  title-success: "§a✓"
+  subtitle-success: "§7Willkommen zurück!"
+
+admin:
+  no-permission: "§cKeine Berechtigung."
+  usage: |
+    §e═══ AuthCraft Admin ═══
+    §7/authcraft reset2fa <Spieler>
+    §7/authcraft unlock <Spieler>
+    §7/authcraft setrole <Spieler> <Rolle>
+    §7/authcraft info <Spieler>
+    §7/authcraft antibot
+    §7/authcraft reload
+  players-only: "§cNur Spieler."
+  reset2fa-usage: "§eVerwendung: /authcraft reset2fa <Spieler>"
+  reset2fa-success: "§a2FA für §e{player} §azurückgesetzt."
+  unlock-usage: "§eVerwendung: /authcraft unlock <Spieler>"
+  unlock-success: "§aKonto §e{player} §aentsperrt."
+  setrole-usage: "§eVerwendung: /authcraft setrole <Spieler> <Rolle>"
+  setrole-success: "§aRolle von §e{player} §aauf §e{role} §agesetzt."
+  setrole-failed: "§cFehlgeschlagen. Prüfe Spieler-/Rollenname."
+  info-usage: "§eVerwendung: /authcraft info <Spieler>"
+  info-header: "§e═══ Konto-Info ═══"
+  info-uuid: "§7UUID: §f{uuid}"
+  info-role: "§7Rolle: §f{role}"
+  info-status: "§7Status: §f{status}"
+  info-2fa: "§72FA: §f{method}"
+  info-hash: "§7Hash: §f{algorithm}"
+  info-failed: "§7Fehlversuche: §f{attempts}"
+  info-last-ip: "§7Letzte IP: §f{ip}"
+  info-last-login: "§7Letzte Anmeldung: §f{date}"
+  info-registered: "§7Registriert: §f{date}"
+  antibot-header: "§e═══ AntiBot Status ═══"
+  antibot-mode: "§7Angriffsmodus: {status}"
+  antibot-mode-active: "§cAKTIV"
+  antibot-mode-off: "§aAus"
+  antibot-blocked: "§7Gesperrte IPs: §f{count}"
+  reloaded: "§aAuthCraft Konfiguration neu geladen."
+  not-found: "§cSpieler nicht gefunden."
+
+notify:
+  failed-login: "§c[AuthCraft] §f{player} §7fehlgeschlagener Anmeldeversuch §c#{attempt} §7von §f{ip}"
+  account-locked: "§c[AuthCraft] §f{player} §7gesperrt §7({ip})"
+  bot-detected: "§c[AuthCraft] §7Bot erkannt: §f{name} §7({ip}) §7[{confidence}%]"
+  unicode-spoof: "§c[AuthCraft] §7Unicode-Spoofing: §f{name} §7({ip})"
+  new-ip-login: "§e[AuthCraft] §f{player} §7von neuer IP angemeldet: §f{ip} §7(vorher: §f{old_ip}§7)"
+  security-prefix: "§c[AuthCraft Security] §f"
+
+error:
+  generic: "§cEin Fehler ist aufgetreten. Bitte versuche es erneut."
+  database: "§cDatenbankfehler. Kontaktiere einen Administrator."
+
+password-strength:
+  very-weak: "§cSehr schwach"
+  weak: "§cSchwach"
+  fair: "§eMittel"
+  strong: "§aStark"
+  very-strong: "§2Sehr stark"
+  progress-bar: "{bar} §7{level}"
+  requirements-header: "§ePasswortanforderungen:"
+  requirement-length: "{status} §7{min}-{max} Zeichen"
+  requirement-uppercase: "{status} §7Großbuchstabe (A-Z)"
+  requirement-lowercase: "{status} §7Kleinbuchstabe (a-z)"
+  requirement-digit: "{status} §7Ziffer (0-9)"
+  requirement-special: "{status} §7Sonderzeichen (!@#$)"
+  requirement-met: "§a✓"
+  requirement-unmet: "§c✗"
+  suggestions-header: "§eVorschläge:"
+  suggestion: "§7- {suggestion}"
+
+login_notification:
+  new_login: "🔐 Neue Anmeldung bei deinem Konto"
+  session_restored: "🔄 Sitzung wiederhergestellt"
+  game_new: "§a✓ Neue Anmeldung erkannt von §e{ip} §7({location})"
+  game_restored: "§7Sitzung wiederhergestellt von §e{ip} §7({location})"
+  security_alert: "§c⚠ Sicherheitswarnung! Verdächtiger Anmeldeversuch erkannt."

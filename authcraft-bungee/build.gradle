@@ -1,0 +1,28 @@
+// authcraft-bungee/build.gradle
+plugins {
+    id 'java'
+}
+
+dependencies {
+    implementation project(':authcraft-core')
+    implementation project(':authcraft-storage')
+    implementation project(':authcraft-security')
+
+    compileOnly 'net.md-5:bungeecord-api:1.20-R0.2'
+}
+
+def pluginVersion = version
+
+tasks.jar {
+    dependsOn ':authcraft-core:jar', ':authcraft-storage:jar', ':authcraft-security:jar'
+    
+    archiveBaseName.set('AuthCraft-BungeeCord')
+    archiveClassifier.set('')
+    archiveVersion.set(pluginVersion.toString())
+    
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/DEPENDENCIES', 'META-INF/LICENSE*', 'META-INF/NOTICE*'
+}

@@ -1,0 +1,262 @@
+# AuthCraft Korean Messages
+# 한국어 메시지
+
+# === Registration ===
+register:
+  usage: "&c사용법: /register <비밀번호> <비밀번호 확인>"
+  password_mismatch: "&c비밀번호가 일치하지 않습니다."
+  password_too_short: "&c비밀번호가 너무 짧습니다. 최소 %min%자 이상이어야 합니다."
+  password_too_simple: "&c비밀번호가 너무 단순합니다. 더 복잡한 비밀번호를 사용해주세요."
+  password_username: "&c비밀번호에 사용자 이름을 포함할 수 없습니다."
+  password_common: "&c비밀번호가 너무 흔합니다. 다른 비밀번호를 선택해주세요."
+  success: "&a등록이 완료되었습니다! 환영합니다, %player%님."
+  already_registered: "&c이미 등록된 계정입니다."
+  please_register: "&e계정 등록이 필요합니다: /register <비밀번호> <비밀번호 확인>"
+  max_accounts: "&c이 IP에서 등록 가능한 계정 수가 초과되었습니다."
+
+# === Login ===
+login:
+  usage: "&c사용법: /login <비밀번호>"
+  incorrect_password: "&c비밀번호가 올바르지 않습니다."
+  success: "&a로그인되었습니다!"
+  please_login: "&e로그인해주세요: /login <비밀번호>"
+  not_registered: "&c등록되지 않은 계정입니다. 먼저 /register를 사용해주세요."
+  already_logged_in: "&c이미 로그인되어 있습니다."
+  locked: "&c계정이 잠겼습니다. %time%초 후에 다시 시도해주세요."
+  kicked_attempts: "&c로그인 시도 횟수가 초과되었습니다."
+
+# === Two-Factor Authentication ===
+twofactor:
+  # TOTP
+  totp:
+    setup_start: "&e2단계 인증 설정을 시작합니다."
+    setup_qr: "&e다음 URL에서 QR코드를 스캔해주세요: %url%"
+    setup_code: "&e또는 이 코드를 수동으로 입력해주세요: %code%"
+    setup_confirm: "&e설정을 완료하려면: /2fa confirm <코드>"
+    setup_success: "&a2단계 인증이 활성화되었습니다!"
+    setup_invalid: "&c코드가 올바르지 않습니다. 다시 시도해주세요."
+    verify_prompt: "&e인증 앱에서 코드를 입력해주세요: /2fa verify <코드>"
+    verify_success: "&a2단계 인증이 완료되었습니다."
+    verify_invalid: "&c코드가 올바르지 않습니다."
+  
+  # Telegram
+  telegram:
+    setup_start: "&e텔레그램 2단계 인증 설정을 시작합니다."
+    setup_link: "&e다음 봇을 시작해주세요: %bot_link%"
+    setup_code: "&e봇에 다음 코드를 전송해주세요: %code%"
+    setup_wait: "&e텔레그램에서 확인을 기다리는 중..."
+    setup_success: "&a텔레그램 2단계 인증이 활성화되었습니다!"
+    setup_cancelled: "&c텔레그램 인증이 취소되었습니다."
+    verify_prompt: "&e텔레그램에서 전송된 코드를 확인해주세요."
+    verify_button: "&e또는 텔레그램에서 승인 버튼을 눌러주세요."
+    verify_approved: "&a텔레그램에서 로그인이 승인되었습니다."
+    verify_denied: "&c텔레그램에서 로그인이 거부되었습니다."
+    verify_timeout: "&c텔레그램 인증 시간이 초과되었습니다."
+  
+  # VK
+  vk:
+    setup_start: "&eVK 2단계 인증 설정을 시작합니다."
+    setup_link: "&e다음 그룹에 메시지를 보내주세요: %group_link%"
+    setup_code: "&e메시지에 다음 코드를 포함해주세요: %code%"
+    setup_wait: "&eVK에서 확인을 기다리는 중..."
+    setup_success: "&aVK 2단계 인증이 활성화되었습니다!"
+    setup_cancelled: "&cVK 인증이 취소되었습니다."
+    verify_prompt: "&eVK에서 전송된 코드를 확인해주세요."
+    verify_button: "&e또는 VK에서 승인 버튼을 눌러주세요."
+    verify_approved: "&aVK에서 로그인이 승인되었습니다."
+    verify_denied: "&cVK에서 로그인이 거부되었습니다."
+    verify_timeout: "&cVK 인증 시간이 초과되었습니다."
+  
+  # Email
+  email:
+    setup_start: "&e이메일 2단계 인증 설정을 시작합니다."
+    setup_address: "&e이메일 주소를 설정해주세요: /email set <이메일>"
+    setup_sent: "&e인증 이메일을 %email%로 전송했습니다."
+    setup_confirm: "&e이메일의 코드를 입력해주세요: /email confirm <코드>"
+    setup_success: "&a이메일 2단계 인증이 활성화되었습니다!"
+    verify_prompt: "&e이메일로 전송된 코드를 입력해주세요: /email verify <코드>"
+    verify_sent: "&e인증 코드를 %email%로 전송했습니다."
+    verify_success: "&a이메일 인증이 완료되었습니다."
+    verify_invalid: "&c코드가 올바르지 않습니다."
+  
+  # Backup codes
+  backup_codes:
+    generated: "&a백업 코드가 생성되었습니다!"
+    list_header: "&e=== 백업 코드 ==="
+    list_item: "&7%number%. &f%code%"
+    warning: "&c이 코드들을 안전한 곳에 보관하세요!"
+    used: "&a백업 코드를 사용했습니다. 남은 코드: %remaining%개"
+    exhausted: "&c백업 코드가 모두 사용되었습니다."
+    regenerate: "&e백업 코드 재생성: /2fa backup"
+  
+  # General
+  status:
+    enabled: "&a2단계 인증: 활성화됨 (%method%)"
+    disabled: "&72단계 인증: 비활성화됨"
+    methods: "&e활성화된 방식: %methods%"
+  
+  disable:
+    success: "&a2단계 인증이 비활성화되었습니다."
+    not_enabled: "&c2단계 인증이 활성화되어 있지 않습니다."
+    confirm: "&e비활성화하려면: /2fa disable confirm"
+  
+  error: "&c2단계 인증 오류: %error%"
+
+# === Session ===
+session:
+  restored: "&a세션이 복원되었습니다."
+  expired: "&e세션이 만료되었습니다. 다시 로그인해주세요."
+  invalid: "&c세션이 유효하지 않습니다."
+
+# === Password Change ===
+changepassword:
+  usage: "&c사용법: /changepassword <현재 비밀번호> <새 비밀번호>"
+  incorrect: "&c현재 비밀번호가 올바르지 않습니다."
+  success: "&a비밀번호가 변경되었습니다."
+  same_password: "&c새 비밀번호는 현재 비밀번호와 달라야 합니다."
+
+# === Logout ===
+logout:
+  success: "&a로그아웃되었습니다."
+  not_logged_in: "&c로그인되어 있지 않습니다."
+
+# === Account ===
+account:
+  locked: "&c계정이 잠겼습니다. 관리자에게 문의해주세요."
+  unlocked: "&a계정 잠금이 해제되었습니다."
+  deleted: "&c계정이 삭제되었습니다."
+
+# === Admin Commands ===
+admin:
+  player_not_found: "&c플레이어를 찾을 수 없습니다: %player%"
+  usage: "&c사용법: /authcraft <명령어> [인자]"
+  
+  # Reset 2FA
+  reset2fa:
+    success: "&a%player%의 2단계 인증을 초기화했습니다."
+    error: "&c2단계 인증 초기화에 실패했습니다."
+  
+  # Unlock
+  unlock:
+    success: "&a%player%의 잠금을 해제했습니다."
+    error: "&c잠금 해제에 실패했습니다."
+  
+  # Set role
+  setrole:
+    success: "&a%player%의 역할을 %role%(으)로 설정했습니다."
+    error: "&c역할 설정에 실패했습니다."
+    invalid_role: "&c유효하지 않은 역할: %role%"
+  
+  # Info
+  info:
+    header: "&e=== 플레이어 정보: %player% ==="
+    uuid: "&7UUID: &f%uuid%"
+    registered: "&7등록일: &f%date%"
+    last_login: "&7마지막 로그인: &f%date%"
+    ip: "&7IP: &f%ip%"
+    role: "&7역할: &f%role%"
+    twofa: "&72단계 인증: &f%status%"
+    locked: "&7잠금 상태: &f%status%"
+  
+  # Reload
+  reload:
+    success: "&a설정을 다시 불러왔습니다."
+    error: "&c설정 다시 불러오기에 실패했습니다."
+
+# === Security ===
+security:
+  # Geo blocking
+  geo_blocked: "&c해당 지역에서의 접근이 차단되었습니다."
+  
+  # VPN/Proxy
+  vpn_blocked: "&cVPN 또는 프록시 사용이 허용되지 않습니다."
+  
+  # Suspicious activity
+  suspicious_login: "&c의심스러운 로그인이 감지되었습니다."
+  new_location: "&e새로운 위치에서의 로그인이 감지되었습니다."
+  
+  # Rate limiting
+  rate_limited: "&c너무 많은 요청이 있었습니다. %time%초 후에 다시 시도해주세요."
+  
+  # Bot detection
+  bot_detected: "&c봇이 감지되었습니다."
+
+# === Notifications ===
+notification:
+  login:
+    title: "&a로그인 알림"
+    message: "&e%ip%에서 귀하의 계정으로 로그인이 있었습니다."
+    new_device: "&c새로운 기기에서의 로그인이 감지되었습니다!"
+    new_location: "&e새로운 위치에서의 로그인: %location%"
+  
+  password_change:
+    title: "&c비밀번호 변경"
+    message: "&e비밀번호가 변경되었습니다."
+    warning: "&c본인이 변경하지 않았다면 즉시 비밀번호를 변경해주세요."
+  
+  security_alert:
+    title: "&4⚠ 보안 경고"
+    message: "&c보안 이벤트가 감지되었습니다: %event%"
+  
+  twofa:
+    enabled: "&a2단계 인증이 활성화되었습니다."
+    disabled: "&c2단계 인증이 비활성화되었습니다."
+
+# === Trusted Device ===
+trusted_device:
+  added: "&a이 기기가 신뢰하는 기기로 등록되었습니다."
+  removed: "&e이 기기의 신뢰가 해제되었습니다."
+  list_header: "&e=== 신뢰하는 기기 ==="
+  list_item: "&7%number%. &f%device% (%date%)"
+  max_reached: "&c신뢰하는 기기 수가 한도에 도달했습니다."
+  prompt: "&e이 기기를 신뢰하시겠습니까? /trustdevice <이름>"
+  expired: "&e신뢰하는 기기가 만료되었습니다."
+
+# === Errors ===
+error:
+  generic: "&c오류가 발생했습니다. 나중에 다시 시도해주세요."
+  database: "&c데이터베이스 오류가 발생했습니다."
+  network: "&c네트워크 오류가 발생했습니다."
+  permission: "&c이 명령어를 실행할 권한이 없습니다."
+  player_only: "&c이 명령어는 플레이어만 사용할 수 있습니다."
+  console_only: "&c이 명령어는 콘솔에서만 사용할 수 있습니다."
+  cooldown: "&c이 명령어는 %time%초 후에 다시 사용할 수 있습니다."
+
+# === Help ===
+help:
+  header: "&e=== AuthCraft 도움말 ==="
+  register: "&7/register <비밀번호> &f- 계정 등록"
+  login: "&7/login <비밀번호> &f- 로그인"
+  changepassword: "&7/changepassword <현재> <새로> &f- 비밀번호 변경"
+  logout: "&7/logout &f- 로그아웃"
+  twofactor: "&7/2fa &f- 2단계 인증 관리"
+  email: "&7/email &f- 이메일 설정"
+  trusteddevice: "&7/trustdevice &f- 신뢰 기기 관리"
+  footer: "&e==================="
+
+# === Password Strength ===
+password_strength:
+  very_weak: "&c매우 약함"
+  weak: "&c약함"
+  fair: "&e보통"
+  strong: "&a강함"
+  very_strong: "&2매우 강함"
+  
+  suggestions:
+    length: "&7최소 %min%자 이상이어야 합니다"
+    uppercase: "&7대문자를 포함해주세요"
+    lowercase: "&7소문자를 포함해주세요"
+    numbers: "&7숫자를 포함해주세요"
+    symbols: "&7특수문자를 포함해주세요"
+    no_common: "&c흔한 비밀번호입니다"
+    no_username: "&c사용자 이름을 포함하지 마세요"
+    no_sequential: "&c연속된 문자를 피하세요"
+    no_repeated: "&c반복되는 문자를 피하세요"
+
+# === Kick Messages ===
+kick:
+  already_online: "&c이미 로그인된 계정입니다."
+  session_expired: "&c세션이 만료되었습니다."
+  security_violation: "&c보안 위반이 감지되었습니다."
+  maintenance: "&c서버가 점검 중입니다."
+  banned: "&c계정이 차단되었습니다. 사유: %reason%"

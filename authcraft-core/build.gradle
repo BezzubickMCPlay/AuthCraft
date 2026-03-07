@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    api 'de.mkammerer:argon2-jvm:2.11'
+    api 'at.favre.lib:bcrypt:0.10.2'
+    api 'com.google.zxing:core:3.5.2'
+    api 'com.google.zxing:javase:3.5.2'
+    api 'com.warrenstrange:googleauth:1.5.0'
+    api 'com.google.code.gson:gson:2.10.1'
+    api 'org.yaml:snakeyaml:2.2'
+    // Redis client for multi-server sync
+    api 'redis.clients:jedis:5.1.0'
+    // Jackson for JSON serialization
+    api 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+    api 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.1'
+}

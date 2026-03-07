@@ -1,0 +1,186 @@
+# authcraft-core/src/main/resources/messages_zh_tw.yml
+# Chinese (Traditional) translations for AuthCraft
+
+prefix: "§6[AuthCraft] §r"
+
+register:
+  usage: "§e用法: /register <密碼> <密碼>"
+  success: "§a註冊成功！歡迎！"
+  already-registered: "§c該使用者名稱已被註冊。"
+  passwords-mismatch: "§c兩次密碼不匹配。"
+  too-many-accounts: "§c您的IP註冊帳號過多（最多 {max} 個）。"
+  prompt: "§a請使用: §e/register <密碼> <密碼> 註冊"
+
+login:
+  usage: "§e用法: /login <密碼>"
+  success: "§a認證成功！"
+  wrong-password: "§c密碼錯誤。剩餘嘗試次數: §e{remaining}"
+  account-not-found: "§c帳號不存在。請使用 §e/register"
+  locked: "§c帳號已鎖定。請在 §e{time}§c後重試。"
+  kicked-locked: "§c帳號因多次登入失敗已鎖定 {time}。"
+  prompt: "§e請使用: §e/login <密碼> 登入"
+  session-restored: "§a工作階段已恢復。歡迎回來！"
+  already-authenticated: "§c您已登入。"
+
+logout:
+  success: "§a您已登出。請使用 §e/login §a重新登入。"
+  not-authenticated: "§c您未登入。"
+  kick: "§c您已登出。\\n§7您的工作階段已終止。\\n§e請重新連線以登入。"
+
+password:
+  change-usage: "§e用法: /changepassword <舊密碼> <新密碼>"
+  changed: "§a密碼修改成功！所有工作階段已失效。"
+  old-incorrect: "§c目前密碼錯誤。"
+  weak-header: "§c密碼太弱："
+  weak-item: "§7- {violation}"
+  must-login: "§c您必須先登入。"
+
+2fa:
+  usage: |
+    §e═══ AuthCraft 雙重認證 ═══
+    §7/2fa enable [totp|telegram|vk|email] §8— 啟用
+    §7/2fa confirm <驗證碼> §8— 確認設定
+    §7/2fa disable <密碼> [方式] §8— 停用
+    §7/2fa status §8— 顯示已啟用方式
+    §7/2fa backup §8— 重新產生備用碼
+    §7/2fa <驗證碼> §8— 登入時輸入驗證碼
+  prompt: "§e請輸入您的雙重驗證碼: §e/2fa <驗證碼>"
+  invalid-code: "§c驗證碼無效。剩餘嘗試次數: §e{remaining}§c。您也可以使用備用碼。"
+  too-many-attempts: "§c雙重驗證嘗試次數過多。"
+  no-pending: "§c沒有待處理的雙重驗證。"
+  method-unavailable: "§c雙重驗證方式 §e{method} §c不可用。"
+  unknown-method: "§c未知方式。請使用: totp, telegram, vk, email"
+  setup-header: "§a═══ 雙重驗證設定 ═══"
+  setup-method: "§7方式: §f{method}"
+  setup-secret: "§7密鑰: §f{secret}"
+  setup-qr: "§7請使用 Google Authenticator 掃描 QR 碼"
+  setup-qr-clickable: "§7或點擊上方連結在驗證器應用程式中開啟"
+  setup-telegram: "§7發送驗證碼 §f{code} §7到 Telegram 機器人: §f@{bot}"
+  setup-vk: "§7發送驗證碼 §f{code} §7到 VK 機器人: §f{bot}"
+  setup-email: "§7驗證碼已發送到 §f{email}"
+  setup-confirm: "§7然後確認: §e/2fa confirm <驗證碼>"
+  enabled: "§a✓ 雙重認證已啟用！"
+  disabled: "§a雙重認證已停用。"
+  wrong-password: "§c密碼錯誤。"
+  backup-header: "§a═══ 備用碼 ═══"
+  backup-warning-save: "§c⚠ 請儲存這些代碼！它們無法再次顯示。"
+  backup-code: "§7 {code}"
+  backup-footer: "§a═════════════════════"
+  backup-remaining: "§e⚠ 剩餘備用碼: §c{remaining}§e。使用 §e/2fa backup §e重新產生。"
+  confirm-usage: "§e用法: /2fa confirm <驗證碼>"
+  confirm-invalid: "§c驗證碼無效。請重試。"
+  disable-usage: "§e用法: /2fa disable <密碼> [方式]"
+  no-setup: "§c沒有正在進行的雙重設定。請先使用 §e/2fa enable"
+  status-header: "§a═══ 雙重驗證狀態 ═══"
+  status-none: "§7未啟用任何雙重驗證方式。"
+  status-footer: "§a═════════════════════"
+  method-disabled: "§a雙重驗證方式 §e{method} §a已停用。"
+  already-enabled: "§c雙重驗證方式 §e{method} §c已啟用。"
+  session-restore-blocked: "§c工作階段恢復後無法啟用雙重驗證。請先使用密碼登入。"
+  login-request-title: "🔐 AuthCraft 登入請求"
+  login-request-player: "👤 玩家: {player}"
+  login-request-ip: "🌐 IP: {ip}"
+  login-request-location: "📍 位置: {location}"
+  login-request-time: "🕐 時間: {time}"
+  login-request-confirm: "✅ 確認"
+  login-request-deny: "❌ 拒絕"
+  login-approved: "§a✓ 透過 {method} 確認登入！"
+  login-denied: "§c透過 {method} 拒絕登入。如非本人操作，請立即修改密碼！"
+  login-denied-kick: "§c登入被帳號擁有者拒絕。"
+  login-waiting: "§e等待透過 {method} 確認... 或輸入驗證碼: /2fa <驗證碼>"
+  login-timeout: "§c確認逾時。請重試。"
+
+role:
+  changed: "§a玩家 §e{player} §a的角色已變更為 §e{role}§a。"
+  removed: "§a已從 §e{player} §a移除角色 §e{role}§a。"
+  not-found: "§c角色未找到: §e{role}"
+  player-not-found: "§c玩家未找到: §e{player}"
+
+security:
+  bot-detected: "§c連線被反機器人系統拒絕。"
+  geo-blocked: "§c不允許從您所在地區連線。"
+  unicode-spoof: "§c偵測到可疑使用者名稱。請使用其他名稱。"
+  ip-blocked: "§c您的IP位址已被暫時封禁。"
+
+limbo:
+  must-auth: "§c您必須先進行認證。"
+  must-auth-chat: "§c您必須先認證才能聊天。"
+  must-auth-command: "§c您必須先認證才能使用指令。"
+  title: "§6AuthCraft"
+  subtitle: "§7請進行認證"
+  title-success: "§a✓"
+  subtitle-success: "§7歡迎回來！"
+
+admin:
+  no-permission: "§c沒有權限。"
+  usage: |
+    §e═══ AuthCraft 管理 ═══
+    §7/authcraft reset2fa <玩家>
+    §7/authcraft unlock <玩家>
+    §7/authcraft setrole <玩家> <角色>
+    §7/authcraft info <玩家>
+    §7/authcraft antibot
+    §7/authcraft reload
+  players-only: "§c僅限玩家。"
+  reset2fa-usage: "§e用法: /authcraft reset2fa <玩家>"
+  reset2fa-success: "§a已重設 §e{player} §a的雙重驗證。"
+  unlock-usage: "§e用法: /authcraft unlock <玩家>"
+  unlock-success: "§a帳號 §e{player} §a已解鎖。"
+  setrole-usage: "§e用法: /authcraft setrole <玩家> <角色>"
+  setrole-success: "§a玩家 §e{player} §a的角色已設為 §e{role}§a。"
+  setrole-failed: "§c操作失敗。請檢查玩家/角色名稱。"
+  info-usage: "§e用法: /authcraft info <玩家>"
+  info-header: "§e═══ 帳號資訊 ═══"
+  info-uuid: "§7UUID: §f{uuid}"
+  info-role: "§7角色: §f{role}"
+  info-status: "§7狀態: §f{status}"
+  info-2fa: "§7雙重: §f{method}"
+  info-hash: "§7雜湊: §f{algorithm}"
+  info-failed: "§7失敗嘗試: §f{attempts}"
+  info-last-ip: "§7最後IP: §f{ip}"
+  info-last-login: "§7最後登入: §f{date}"
+  info-registered: "§7註冊時間: §f{date}"
+  antibot-header: "§e═══ 反機器人狀態 ═══"
+  antibot-mode: "§7攻擊模式: {status}"
+  antibot-mode-active: "§c活躍"
+  antibot-mode-off: "§a關閉"
+  antibot-blocked: "§7已封禁IP: §f{count}"
+  reloaded: "§aAuthCraft 設定已重新載入。"
+  not-found: "§c玩家未找到。"
+
+notify:
+  failed-login: "§c[AuthCraft] §f{player} §7登入失敗嘗試 §c#{attempt} §7來自 §f{ip}"
+  account-locked: "§c[AuthCraft] §f{player} §7已鎖定 §7({ip})"
+  bot-detected: "§c[AuthCraft] §7偵測到機器人: §f{name} §7({ip}) §7[{confidence}%]"
+  unicode-spoof: "§c[AuthCraft] §7Unicode欺騙: §f{name} §7({ip})"
+  new-ip-login: "§e[AuthCraft] §f{player} §7從新IP登入: §f{ip} §7(之前: §f{old_ip}§7)"
+  security-prefix: "§c[AuthCraft 安全] §f"
+
+error:
+  generic: "§c發生錯誤。請重試。"
+  database: "§c資料庫錯誤。請聯絡管理員。"
+
+password-strength:
+  very-weak: "§c非常弱"
+  weak: "§c弱"
+  fair: "§e一般"
+  strong: "§a強"
+  very-strong: "§2非常強"
+  progress-bar: "{bar} §7{level}"
+  requirements-header: "§e密碼要求："
+  requirement-length: "{status} §7{min}-{max} 個字元"
+  requirement-uppercase: "{status} §7大寫字母 (A-Z)"
+  requirement-lowercase: "{status} §7小寫字母 (a-z)"
+  requirement-digit: "{status} §7數字 (0-9)"
+  requirement-special: "{status} §7特殊字元 (!@#$)"
+  requirement-met: "§a✓"
+  requirement-unmet: "§c✗"
+  suggestions-header: "§e建議："
+  suggestion: "§7- {suggestion}"
+
+login_notification:
+  new_login: "🔐 您的帳號有新登入"
+  session_restored: "🔄 工作階段已恢復"
+  game_new: "§a✓ 偵測到新登入來自 §e{ip} §7({location})"
+  game_restored: "§7工作階段已從 §e{ip} §7恢復 ({location})"
+  security_alert: "§c⚠ 安全警報！偵測到可疑登入嘗試。"

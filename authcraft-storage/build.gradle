@@ -1,0 +1,11 @@
+// authcraft-storage/build.gradle
+dependencies {
+    api project(':authcraft-core')
+    api 'com.zaxxer:HikariCP:5.1.0'
+    api 'com.github.ben-manes.caffeine:caffeine:3.1.8'
+
+    // JDBC Drivers
+    runtimeOnly 'org.xerial:sqlite-jdbc:3.44.1.0'
+    runtimeOnly 'com.mysql:mysql-connector-j:8.2.0'
+    runtimeOnly 'org.postgresql:postgresql:42.7.1'
+}

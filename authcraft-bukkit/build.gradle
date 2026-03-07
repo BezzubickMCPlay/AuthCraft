@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    implementation project(':authcraft-core')
+    implementation project(':authcraft-storage')
+    implementation project(':authcraft-security')
+    implementation project(':authcraft-integrations')
+
+    // Bukkit API - use 1.13+ for proper title API support
+    compileOnly 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
+
+    // ProtocolLib для скрытия инвентаря (поддержка 1.8)
+    compileOnly 'com.github.dmulloy2:ProtocolLib:4.8.0'
+
+    // Vault для интеграции с permission плагинами
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7.1'
+
+    // PlaceholderAPI (поддержка 1.8)
+    compileOnly 'me.clip:placeholderapi:2.11.5'
+
+    // Citizens2 совместимость (API для 1.8)
+    compileOnly 'net.citizensnpcs:citizensapi:2.0.30-SNAPSHOT'
+
+    // Telegram Bot API for 2FA
+    implementation 'com.github.pengrad:java-telegram-bot-api:6.3.0'
+}
+
+// Define version at configuration time for use in processResources
+def pluginVersion = version
+
+tasks.processResources {
+    filesMatching('plugin.yml') {
+        expand(
+            'version': pluginVersion,
+            'name': 'AuthCraft'
+        )
+    }
+}
+
+// Create a fat JAR using standard Gradle jar task with duplicates strategy
+tasks.jar {
+    dependsOn ':authcraft-core:jar', ':authcraft-storage:jar', ':authcraft-security:jar', ':authcraft-integrations:jar'
+    
+    archiveClassifier.set('')
+    archiveBaseName.set('AuthCraft-Bukkit')
+    archiveVersion.set(pluginVersion.toString())
+    
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/DEPENDENCIES', 'META-INF/LICENSE*', 'META-INF/NOTICE*'
+}

@@ -1,0 +1,64 @@
+# authcraft-core/src/main/resources/roles.yml
+default-role: guest
+
+roles:
+  guest:
+    permission: "authcraft.guest"
+    commands:
+      - "help"
+      - "spawn"
+      - "rules"
+    requires-2fa: false
+    priority: 0
+
+  player:
+    permission: "authcraft.player"
+    inherits: guest
+    commands:
+      - "tpa"
+      - "home"
+      - "sethome"
+      - "msg"
+      - "mail"
+    requires-2fa: false
+    priority: 1
+
+  donator:
+    permission: "authcraft.donator"
+    inherits: player
+    commands:
+      - "kit donator"
+      - "fly"
+      - "hat"
+      - "nick"
+    requires-2fa: true
+    priority: 10
+
+  moderator:
+    permission: "authcraft.moderator"
+    inherits: donator
+    commands:
+      - "kick"
+      - "mute"
+      - "tempban"
+      - "vanish"
+      - "invsee"
+      - "tp"
+    requires-2fa: true
+    priority: 50
+
+  admin:
+    permission: "authcraft.admin"
+    inherits: moderator
+    commands:
+      - "ban"
+      - "unban"
+      - "setrole"
+      - "removerole"
+      - "gamemode"
+      - "give"
+      - "authcraft"
+      - "stop"
+      - "reload"
+    requires-2fa: true
+    priority: 100

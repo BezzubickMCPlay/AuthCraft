@@ -1,0 +1,10 @@
+// authcraft-integrations/build.gradle
+dependencies {
+    api project(':authcraft-core')
+
+    // Telegram
+    implementation 'com.github.pengrad:java-telegram-bot-api:7.1.1'
+
+    // Email
+    implementation 'com.sun.mail:jakarta.mail:2.0.1'
+}
