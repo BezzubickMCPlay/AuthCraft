@@ -468,7 +468,7 @@ When adding features, update:
 
 **DO NOT** open public issues for security vulnerabilities.
 
-Email: security@authcraft.dev
+Email: BezzubickMCPlay+AuthCraft@gmail.com
 
 Include:
 - Description of vulnerability
@@ -490,7 +490,7 @@ All security-related PRs require:
 - **GitHub Discussions**: General questions
 - **GitHub Issues**: Bug reports, features
 - **Discord**: Real-time chat
-- **Email**: security@authcraft.dev (security only)
+- **Email**: BezzubickMCPlay+AuthCraft@gmail.com (security only)
 
 ---
 
