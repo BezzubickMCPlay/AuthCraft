@@ -6,7 +6,7 @@ version: '${version}'
 # api-version: '1.16'  # УБРАНО — это ломает 1.8-1.12
 description: Advanced authentication and security plugin for Minecraft 1.8-1.21
 author: AuthCraft Team
-website: https://github.com/authcraft
+website: https://github.com/BezzubickMCPlay/AuthCraft
 
 softdepend:
   - Vault

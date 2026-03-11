@@ -104,7 +104,7 @@ AuthCraft is an innovative plugin for Minecraft servers providing **bank-grade s
 1. **Download latest version**
    ```bash
    # From GitHub Releases
-   wget https://github.com/authcraft/authcraft/releases/latest/download/AuthCraft.jar
+   wget https://github.com/BezzubickMCPlay/AuthCraft/releases/latest/download/AuthCraft.jar
    ```
 
 2. **Install plugin**
@@ -365,7 +365,7 @@ Authorization: Bearer YOUR_API_KEY
 
 ```bash
 # Clone
-git clone https://github.com/authcraft/authcraft.git
+git clone https://github.com/BezzubickMCPlay/AuthCraft.git
 cd authcraft
 
 # Build

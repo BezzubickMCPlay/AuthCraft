@@ -51,7 +51,7 @@ git clone https://github.com/YOUR_USERNAME/authcraft.git
 cd authcraft
 
 # Add upstream remote
-git remote add upstream https://github.com/authcraft/authcraft.git
+git remote add upstream https://github.com/BezzubickMCPlay/AuthCraft.git
 ```
 
 ### Keep Your Fork Updated

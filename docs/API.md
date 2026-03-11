@@ -733,7 +733,7 @@ Future versions will support webhooks for events:
 ## Support
 
 For API-related questions:
-- **GitHub Issues**: https://github.com/authcraft/authcraft/issues
+- **GitHub Issues**: https://github.com/BezzubickMCPlay/AuthCraft/issues
 - **Discord**: https://discord.authcraft.dev
 - **Email**: api@authcraft.dev
 

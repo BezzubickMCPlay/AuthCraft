@@ -74,10 +74,10 @@ Download the latest release from GitHub:
 
 ```bash
 # Using wget
-wget https://github.com/authcraft/authcraft/releases/latest/download/AuthCraft.jar
+wget https://github.com/BezzubickMCPlay/AuthCraft/releases/latest/download/AuthCraft.jar
 
 # Using curl
-curl -L -o AuthCraft.jar https://github.com/authcraft/authcraft/releases/latest/download/AuthCraft.jar
+curl -L -o AuthCraft.jar https://github.com/BezzubickMCPlay/AuthCraft/releases/latest/download/AuthCraft.jar
 ```
 
 ### Step 2: Install
@@ -677,7 +677,7 @@ mysql -u authcraft -p authcraft < backup.sql
 ## Support
 
 - **Documentation**: https://docs.authcraft.dev
-- **GitHub Issues**: https://github.com/authcraft/authcraft/issues
+- **GitHub Issues**: https://github.com/BezzubickMCPlay/AuthCraft/issues
 - **Discord**: https://discord.authcraft.dev
 - **Email**: support@authcraft.dev
 

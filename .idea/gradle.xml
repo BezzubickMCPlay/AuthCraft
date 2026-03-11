@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/authcraft-security" />
             <option value="$PROJECT_DIR$/authcraft-storage" />
             <option value="$PROJECT_DIR$/authcraft-velocity" />
+            <option value="$PROJECT_DIR$/authcraft-web" />
           </set>
         </option>
       </GradleProjectSettings>

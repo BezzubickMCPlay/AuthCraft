@@ -858,7 +858,7 @@ roles:
 For configuration help:
 - **Documentation**: https://docs.authcraft.dev
 - **Discord**: https://discord.authcraft.dev
-- **GitHub**: https://github.com/authcraft/authcraft/issues
+- **GitHub**: https://github.com/BezzubickMCPlay/AuthCraft/issues
 
 ---
 

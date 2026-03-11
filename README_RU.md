@@ -103,7 +103,7 @@ AuthCraft — это инновационный плагин для сервер
 1. **Скачайте последнюю версию**
    ```bash
    # С GitHub Releases
-   wget https://github.com/authcraft/authcraft/releases/latest/download/AuthCraft.jar
+   wget https://github.com/BezzubickMCPlay/AuthCraft/releases/latest/download/AuthCraft.jar
    ```
 
 2. **Установите плагин**
@@ -343,7 +343,7 @@ Authorization: Bearer YOUR_API_KEY
 
 ```bash
 # Клонирование
-git clone https://github.com/authcraft/authcraft.git
+git clone https://github.com/BezzubickMCPlay/AuthCraft.git
 cd authcraft
 
 # Сборка
